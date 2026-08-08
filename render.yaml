@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: construction-management-app
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase: DATABASE_URL
+      - key: NEXTAUTH_URL
+        fromDatabase: NEXTAUTH_URL
+      - key: NEXTAUTH_SECRET
+        fromDatabase: NEXTAUTH_SECRET
